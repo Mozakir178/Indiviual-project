@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add To Card</title>
+    <style>
+        #card {
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        .check {
+            width: 150px;
+            margin: auto;
+            background-color: black;
+            color: white;
+            display: block;
+            text-decoration: none;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="payment.html" class="check">Checkout</button>
+
+
+</body>
+
+</html>
+<script>
+    let a = JSON.parse(localStorage.getItem("addedtobookmarkedarr"))
+
+
+    const div = document.createElement('div');
+    div.setAttribute('id', 'card');
+
+    a.map(mapWomensData);
+
+    function mapWomensData(el, index) {
+        const div1 = document.createElement('div');
+        const womansImages = document.createElement('img');
+        womansImages.src = el.image;
+        const name = document.createElement('h4');
+        name.innerText = el.name;
+        const price = document.createElement('p');
+        price.innerText = el.price
+        const addtocard = document.createElement('button');
+        addtocard.innerText = "remove"
+        addtocard.className = "btn-addtocard"
+        addtocard.addEventListener('click', function() {
+            addedtocard(el);
+        });
+
+        div1.append(womansImages, name, price, addtocard);
+        div.append(div1)
+    }
+    document.body.appendChild(div);
+
+    function addedtocard(el, index) {
+        // addedtobookmarkedarr.push(obj);
+        a = a.splice(index, 1);
+        localStorage.setItem('addedtobookmarkedarr', JSON.stringify(a));
+        window.location.reload();
+    }
+
+
+    console.log(a)
+</script>
