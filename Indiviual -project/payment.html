@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #payment {
+            display: grid;
+            width: 30%;
+            margin: auto;
+            padding: 10px;
+            box-sizing: border-box;
+            grid-template-columns: 1;
+        }
+        
+        form>* {
+            padding: 10px 40px;
+            margin-top: 10px;
+        }
+        
+        h1 {
+            margin: 50px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Payment Page</h1>
+
+    <form id="payment">
+        <label for="name">Enter your name:</label>
+        <input type="text">
+
+        <label for="card-no">Enter your card number:</label>
+        <input type="number" id="card">
+
+        <label for="cvv">CVV</label>
+        <input type="number" id="cvv">
+        <label for="exp-date">ExpiryDate</label>
+        <input type="date">
+        <input type="submit">
+    </form>
+
+
+</body>
+
+</html>
+<script>
+    document.querySelector('form').addEventListener('submit', payment);
+
+    function payment(event) {
+        event.preventDefault();
+
+        let cvv = document.getElementById('cvv').value;
+        let card = document.getElementById('card').value;
+
+        if (cvv.length === 3 && card.length === 14) {
+            window.location.href = "otp.html"
+        } else
+            alert("Please enter correct details")
+    }
+</script>

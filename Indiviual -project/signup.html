@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+
+    <style>
+        div {
+            width: 30%;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 100px;
+            color: white;
+            background-color: #48c9b0;
+        }
+        
+        form {
+            display: grid;
+            width: 70%;
+            grid-template-columns: 1fr;
+            margin: auto;
+            gap: 20px;
+        }
+        
+        form>* {
+            padding: 10px 0;
+            font-size: 18px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border: none;
+            padding: 15px;
+        }
+        
+        h1 {
+            padding-top: 60px;
+        }
+        
+        form>*:last-child {
+            margin-bottom: 70px;
+            background-color: #1d9079;
+            color: white;
+            width: auto;
+        }
+        /* form>*:nth-last-child(2) {
+            background-color: #1d9079;
+            color: white;
+        } */
+        
+        a>* {
+            text-decoration: none;
+            background-color: #1d9079;
+            color: white;
+            font-size: 15px;
+            text-align: center;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1>
+            - Visitor -
+        </h1>
+        <form id="singup">
+
+
+            <input type="text" placeholder="Full name" value="">
+            <input type="email" placeholder="Email" value="">
+            <input type="text" placeholder="Password" value="">
+            <input type="submit" value="SIGNUP" />
+
+        </form>
+
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    let info = document.querySelectorAll("#singup>input");
+
+
+
+    document.querySelector("form").addEventListener("submit", sub);
+    let data = [];
+
+    function sub() {
+
+        event.preventDefault();
+
+        let name = info[0].value;
+        let email = info[1].value;
+        let org = info[2].value;
+
+        let person = {
+            Name: name,
+            Email: email,
+            Organization: org
+
+        }
+
+
+        data.push(person);
+
+        person = JSON.stringify(person);
+        localStorage.setItem("per", person)
+        console.log(data);
+        if (email == "" || org == "" || name == "") {
+            alert("Please enter a name and email address and password")
+        } else {
+            alert("Signup successful Please return to homepage and login");
+            localStorage.setItem("code", "not")
+            window.location.href = "login.html"
+        }
+
+    }
+</script>

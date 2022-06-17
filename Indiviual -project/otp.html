@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>otp</title>
+    <style>
+        div {
+            width: 15%;
+            margin: 100px auto;
+            text-align: center;
+        }
+        
+        button {
+            margin-top: 20px;
+        }
+        
+        h1 {
+            margin: auto;
+            text-align: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Thanks for Shopping Please enter OTP for payment</h1>
+
+    <div>
+        <input type="number" placeholder="Enter OTP">
+        <button>payment</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    document.querySelector('button').addEventListener('click', payment);
+
+    function payment(event) {
+        let otp = document.querySelector('input').value;
+        if (otp.length === 6) {
+            alert("Payment successful");
+            alert("Thanks for shopping");
+            window.location.href = "index.html";
+        } else
+            alert("please enter correct otp")
+    }
+</script>

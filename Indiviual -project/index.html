@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homepage</title>
+    <style>
+        body>div:first-of-type {
+            display: flex;
+            position: sticky;
+            justify-content: space-between;
+            padding: 10px 50px;
+            background-color: black;
+            color: white;
+            width: 90%;
+            margin: 50px auto;
+            border-radius: 15px;
+        }
+        
+        div:first-of-type>div:last-of-type {
+            display: flex;
+            gap: 70px;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        #mens,
+        #womens {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            box-sizing: border-box;
+            padding: 50px;
+        }
+        
+        h1 {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        h2 {
+            margin: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div>
+            <h3>
+                Reebok
+            </h3>
+
+        </div>
+        <div>
+            <h3> <a href="mens.html">Man</a> </h3>
+            <h3> <a href="women.html">Woman</a> </h3>
+            <h3> <a href="addtocard.html">Card</a> </h3>
+            <h3> <a href="signup.html">Signup</a> </h3>
+            <h3><a href="logout.html">Logout</a> </h3>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    let permissions = localStorage.getItem('code');
+
+    if (permissions !== "allow") {
+
+        window.location.href = "login.html";
+    }
+</script>
+
+<script>
+    const h2 = document.createElement('h2');
+    h2.innerHTML = "For more Men's collections go to mens section"
+    document.body.appendChild(h2);
+
+    let mensData = [{
+        image_url: "https://content.shop4reebok.com/static/Product-EX4296/reebok_EX4296_1.jpg.plp",
+        name: "MEN'S REEBOK RUNNING ROADMAP SHOES",
+        price: "1170",
+        strikedoffprice: "$2599",
+    }, {
+        image_url: "https://content.shop4reebok.com/static/Product-EX3921/reebok_EX3921_1.jpg.plp",
+        name: "MEN'S REEBOK SWIM ARUBA FLIP SLIPPERS ",
+        price: 699,
+        strikedoffprice: 999,
+    }, {
+        image_url: "https://content.shop4reebok.com/static/Product-EX4160/reebok_EX4160_1.jpg.plp",
+        name: " MEN'S REEBOK RUNNING AUSTIN SHOES",
+        price: 945,
+        strikedoffprice: 2099,
+    }, {
+        image_url: "https://content.shop4reebok.com/static/Product-FV8798/MEN_SWIM_SLIPPERS_FV8798_1.jpg.plp",
+        name: "MEN'S REEBOK SWIM AVENGER FLIP LP SLIPPERS",
+        price: 399,
+        strikedoffprice: 799,
+    }];
+
+
+    const div = document.createElement('div');
+    div.setAttribute('id', 'mens');
+
+    mensData.map(mapMensData);
+
+    function mapMensData(el) {
+        const div1 = document.createElement('div');
+        const mansImages = document.createElement('img');
+        mansImages.src = el.image_url;
+        const name = document.createElement('h4');
+        name.innerText = el.name;
+        const price = document.createElement('p');
+        price.innerText = el.price
+        const addtocard = document.createElement('button');
+        addtocard.innerText = "Add to Card"
+        addtocard.className = "btn-addtocard"
+
+        div1.append(mansImages, name, price, addtocard);
+        div.append(div1)
+    }
+    document.body.appendChild(div);
+
+    const h3 = document.createElement('h2');
+    h3.innerHTML = "For more Women's collections go to mens section"
+    document.body.appendChild(h3);
+
+
+    let womensData = [{
+        image_url: "https://content.shop4reebok.com/static/Product-GL2296/reebok_GL2296_1.jpg.plp",
+        name: "WOMEN'S REEBOK PRINT LEGGINGS ",
+        price: 1549,
+        strikedoffprice: 1799,
+    }, {
+        image_url: "https://content.shop4reebok.com/static/Product-GV5726/reebok_GV5726_1.jpg.plp",
+        name: "WOMEN'S REEBOK POLYTIGHT",
+        price: 1249,
+        strikedoffprice: 1749,
+    }, {
+        image_url: "https://content.shop4reebok.com/static/Product-GT2338/reebok_GT2338_1.jpg.plp",
+        name: "WOMEN'S REEBOK SLEEVE TEE",
+        price: 699,
+        strikedoffprice: 1245,
+    }, {
+        image_url: "https://content.shop4reebok.com/static/Product-GL2841/adidas_GL2841_1.jpg.plp",
+        name: "WOMEN'S REEBOK PP TIGHTS",
+        price: 749,
+        strikedoffprice: 1299,
+    }];
+
+
+
+    const div3 = document.createElement('div');
+    div3.setAttribute('id', 'womens');
+
+    womensData.map(mapWomensData);
+
+    function mapWomensData(el) {
+        const div1 = document.createElement('div');
+        const womansImages = document.createElement('img');
+        womansImages.src = el.image_url;
+        const name = document.createElement('h4');
+        name.innerText = el.name;
+        const price = document.createElement('p');
+        price.innerText = el.price
+        const addtocard = document.createElement('button');
+        addtocard.innerText = "Add to Card"
+        addtocard.className = "btn-addtocard"
+
+        div1.append(womansImages, name, price, addtocard);
+        div3.append(div1)
+    }
+    document.body.appendChild(div3);
+</script>
